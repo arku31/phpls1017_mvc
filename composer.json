@@ -1,0 +1,9 @@
+{
+    "require": {
+        "symfony/console": "^3.3",
+        "phpmailer/phpmailer": "^5.2",
+        "google/recaptcha": "^1.1",
+        "twig/twig": "^2.4",
+        "paquettg/php-html-parser": "^1.7"
+    }
+}

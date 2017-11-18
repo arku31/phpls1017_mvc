@@ -4,6 +4,7 @@ require_once "core/MainController.php";
 require_once "core/view.php";
 
 require_once "models/user.php";
+require_once __DIR__."/vendor/autoload.php";
 
 // /users/test
 $routes = explode('/', $_SERVER['REQUEST_URI']);

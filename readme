@@ -1,0 +1,6 @@
+- Composer
+- PHPMailer - отправка писем
+- Google Recaptcha
+- Шаблонизатор Twig
+- Парсинг HTML
+- Symfony Console

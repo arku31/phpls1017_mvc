@@ -2,11 +2,24 @@
 
 namespace App;
 
+use Twig_Environment;
+use Twig_Loader_Filesystem;
+
 class View
 {
     public function render(String $filename, array $data)
     {
         require_once __DIR__."/../views/".$filename.".php";
+    }
+
+    public function renderTwig(String $filename, array $data = [])
+    {
+        $loader = new Twig_Loader_Filesystem('templates');
+        $twig = new Twig_Environment($loader, array(
+            'cache' => 'templates_c',
+        ));
+
+        echo $twig->render($filename.'.html', $data);
     }
 }
 
