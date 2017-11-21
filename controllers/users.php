@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Faker\Factory;
+
 class Users extends MainController
 {
     public function index()
@@ -36,7 +38,7 @@ class Users extends MainController
         $user = User::find($id);
         $user->name = strip_tags($_POST['name']);
         $user->save();
-        $this->redirect('users/edit/'.$id);
+        $this->redirect('users/edit/' . $id);
     }
 
     public function updateBulk($id)
@@ -46,7 +48,7 @@ class Users extends MainController
         //id, name, is_admin
         $user->update($_POST); //['name' => 'asd']
 
-        $this->redirect('users/edit/'.$id);
+        $this->redirect('users/edit/' . $id);
     }
 
     public function destroy($id)
@@ -56,5 +58,15 @@ class Users extends MainController
         $this->redirect('users');
 
 //        User::destroy($id); //сразу удаляет без вопросов
+    }
+
+    public function populate()
+    {
+        $faker = Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+            $user = new User();
+            $user->name = $faker->name;
+            $user->save();
+        }
     }
 }
