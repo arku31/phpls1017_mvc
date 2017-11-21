@@ -2,23 +2,12 @@
 
 namespace App;
 
-class User
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
 {
-    protected $users = [
-      'user1', 'user2', 'user3'
-    ];
-    public function all()
-    {
-        return $this->users;
-    }
+    public $timestamps = true;
 
-    public function first()
-    {
-        return $this->users[0];
-    }
-
-    public function get($id)
-    {
-        return $this->users[$id];
-    }
+//    protected $fillable = ['name'];
+    protected $guarded = ['id'];
 }

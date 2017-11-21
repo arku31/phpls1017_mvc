@@ -5,10 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-Hello from twig
-{% for digit in digits %}
-<li>{{ digit|e }}</li>
-{% endfor %}
 
+<a href="/users/create">Create user</a> <br><br>
+
+Hello from twig
+<style>
+    table, tr, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<table>
+{% for user in users %}
+<tr>
+    <td>{{ user.name|e }}</td>
+    <td>
+        <a href="/users/edit/{{user.id}}">Edit</a>
+    </td>
+    <td>
+        <a href="/users/destroy/{{user.id}}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
 </body>
 </html>

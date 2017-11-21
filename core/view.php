@@ -16,7 +16,7 @@ class View
     {
         $loader = new Twig_Loader_Filesystem('templates');
         $twig = new Twig_Environment($loader, array(
-            'cache' => 'templates_c',
+            'cache' => false,
         ));
 
         echo $twig->render($filename.'.html', $data);

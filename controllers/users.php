@@ -6,40 +6,55 @@ class Users extends MainController
 {
     public function index()
     {
-        echo "users index";
+        $users = User::all();
+        $data = ['users' => $users];
+        $this->view->renderTwig('index', $data);
     }
 
     public function create()
     {
-        echo "User create interface";
+        $this->view->renderTwig('create');
     }
 
-    public function nelza($id, $id2)
+    public function store()
     {
-        echo 'nelzia';
+        $user = new User();
+        $user->name = strip_tags($_POST['name']);
+        $user->save();
+        $this->redirect('users');
     }
 
-    public function showUserList()
+    public function edit($id)
     {
-        $users_model = new User();
-        $users = $users_model->all();
-
-        for ($i = 0; $i < count($users); $i++) {
-            $users[$i] = $users[$i] . "changed";
-        }
-
-        $data['users'] = $users;
-        $data['username'] = 'Igor';
-        $this->view->render('users/userlist', $data);
+        $user = User::find($id);
+        $data = ['user' => $user];
+        $this->view->renderTwig('edit', $data);
     }
 
-    public function showFirstUser()
+    public function update($id)
     {
+        $user = User::find($id);
+        $user->name = strip_tags($_POST['name']);
+        $user->save();
+        $this->redirect('users/edit/'.$id);
+    }
 
-        $users_model = new User();
-        $user = $users_model->first();
+    public function updateBulk($id)
+    {
+        $user = User::find($id);
+        //структура таблицы:
+        //id, name, is_admin
+        $user->update($_POST);
 
-        $data['user'] = $user;
-        $this->view->render('users/userfirst', $data);
+        $this->redirect('users/edit/'.$id);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id); //сначала получает данные
+        $user->delete(); //потом удаляет, но данные сохраняются в пхп до конца сессии
+        $this->redirect('users');
+
+//        User::destroy($id); //сразу удаляет без вопросов
     }
 }

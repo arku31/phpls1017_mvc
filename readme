@@ -4,3 +4,9 @@
 - Шаблонизатор Twig
 - Парсинг HTML
 - Symfony Console
+
+- Eloquent ORM - работа с БД, миграции
+- Faker - использование фейковых данных
+- Тестирование с PHPUnit
+- Валидация данных с GUMP
+- Intervention Image - работа с изображениями
