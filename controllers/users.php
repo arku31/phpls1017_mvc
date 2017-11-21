@@ -41,10 +41,10 @@ class Users extends MainController
 
     public function updateBulk($id)
     {
-        $user = User::find($id);
+        $user = User::find($id); //select where id=1 LIMIT 1
         //структура таблицы:
         //id, name, is_admin
-        $user->update($_POST);
+        $user->update($_POST); //['name' => 'asd']
 
         $this->redirect('users/edit/'.$id);
     }

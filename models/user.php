@@ -10,4 +10,6 @@ class User extends Model
 
 //    protected $fillable = ['name'];
     protected $guarded = ['id'];
+
+//    protected $primaryKey = "user_id";
 }
